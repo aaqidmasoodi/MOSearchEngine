@@ -1,0 +1,60 @@
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment directories
+venv/
+env/
+.venv/
+.env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Testing
+.coverage
+*.cover
+*.tox
+*.nox
+*.hypothesis/
+*.pytest_cache/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.log
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# PyCharm
+*.iml
+
+# MacOS Finder folder attributes
+.DS_Store
+
+# Windows Thumbs.db
+Thumbs.db
+
+# Python environment files
+*.env
+*.venv
+
+# MyPy configuration
+.mypy_cache/
+
+# Pylint configuration
+.pylint.d/
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+__pycache__/
+db.sqlite3
