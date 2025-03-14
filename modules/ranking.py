@@ -1,7 +1,7 @@
 import math
 from collections import defaultdict
 import numpy as np
-from preprocess import preprocess_text
+from .preprocess import preprocess_text
 
 class VectorSpaceModel:
     def __init__(self, documents, term_idf, doc_vectors):
@@ -54,7 +54,7 @@ class BM25:
         self.documents = documents
         self.k1 = k1
         self.b = b
-        from preprocess import compute_doc_term_freqs
+        from modules.preprocess import compute_doc_term_freqs
         self.doc_term_freqs, self.doc_lengths, self.avg_doc_length = compute_doc_term_freqs(documents)
         
         self.inverted_index = defaultdict(dict)
@@ -116,10 +116,10 @@ class BM25:
         return ranked_docs
 
 class LanguageModel:
-    def __init__(self, documents, mu=500):  # Lower mu
+    def __init__(self, documents, mu=500): 
         self.documents = documents
         self.mu = mu
-        from preprocess import compute_doc_term_freqs
+        from modules.preprocess import compute_doc_term_freqs
         self.doc_term_freqs, self.doc_lengths, _ = compute_doc_term_freqs(documents)
         
         self.collection_term_freq = defaultdict(int)

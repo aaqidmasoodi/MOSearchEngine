@@ -2,10 +2,11 @@ import os
 import time
 import argparse
 from multiprocessing import Pool, cpu_count
-from parser import parse_documents, parse_queries, parse_qrels
-from ranking import VectorSpaceModel, BM25, LanguageModel
-from preprocess import preprocess_all
-from indexing import build_inverted_index, save_index, load_index
+from modules.parser import parse_documents, parse_queries, parse_qrels  # Updated import
+from modules.ranking import VectorSpaceModel, BM25, LanguageModel  # Updated import
+from modules.indexing import build_inverted_index, save_index, load_index  # Updated import
+
+# Rest of the code remains the same
 
 def save_trec_eval_output(ranked_docs, query_id, model_name, output_file):
     with open(output_file, "a") as f:

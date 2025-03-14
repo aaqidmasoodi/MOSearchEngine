@@ -9,7 +9,9 @@ import numpy as np
 import math
 import nltk
 import ssl
-import parser
+from modules import parser  # Updated import
+
+# Rest of the code remains the same
 
 ssl._create_default_https_context = ssl._create_unverified_context
 

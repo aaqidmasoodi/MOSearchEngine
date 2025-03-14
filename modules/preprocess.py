@@ -5,7 +5,6 @@ from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer  # Switch to Snowball for lighter stemming
 import ssl
 import nltk
-import math
 
 # Fix SSL certificate issue for NLTK downloads
 ssl._create_default_https_context = ssl._create_unverified_context
