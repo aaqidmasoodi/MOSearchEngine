@@ -91,15 +91,12 @@ def parse_qrels(qrels_file):
         return []
 
 def clean_text(text):
-    """Clean and normalize text for better indexing."""
+    """Clean and normalize text, retaining numbers in context."""
     # Replace multiple spaces with a single space
     text = re.sub(r'\s+', ' ', text)
     
     # Remove special characters but keep alphanumeric, spaces, and basic punctuation
     text = re.sub(r'[^\w\s\.,;:!?-]', '', text)
-    
-    # Remove isolated numbers (but keep numbers within words)
-    text = re.sub(r'\b\d+\b', '', text)
     
     # Normalize whitespace again after all replacements
     text = re.sub(r'\s+', ' ', text).strip()
@@ -107,7 +104,6 @@ def clean_text(text):
     return text
 
 if __name__ == "__main__":
-    # Parse files with better error handling
     try:
         documents = parse_documents(cran_docs_file)
         print(f"Total documents: {len(documents)}")
@@ -118,22 +114,18 @@ if __name__ == "__main__":
         qrels = parse_qrels(cran_qrels_file)
         print(f"Total relevance judgments: {len(qrels)}")
         
-        # Print sample outputs
+        # Enhanced sample output
         if documents:
-            print("\nSample Document:")
-            sample_doc_id = next(iter(documents))
-            print(f"ID: {sample_doc_id}")
-            print(f"Title: {documents[sample_doc_id]['title']}")
-            print(f"Text (first 100 chars): {documents[sample_doc_id]['text'][:100]}...")
+            print("\nSample Document (Doc 1):")
+            print(f"Title: {documents['1']['title']}")
+            print(f"Text (first 100 chars): {documents['1']['text'][:100]}...")
         
         if queries:
-            print("\nSample Queries:")
-            sample_queries = list(queries.items())[:2]
-            for qid, qtext in sample_queries:
-                print(f"Query {qid}: {qtext}")
+            print("\nSample Query (Query 1):")
+            print(f"Text: {queries['1']}")
         
         if qrels:
-            print("\nSample Relevance Judgments:")
+            print("\nSample Relevance Judgments (first 5):")
             for qrel in qrels[:5]:
                 print(f"Query {qrel[0]} - Doc {qrel[1]} - Relevance {qrel[2]}")
                 
